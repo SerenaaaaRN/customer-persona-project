@@ -56,7 +56,6 @@ Project ini telah direfaktor menjadi arsitektur yang lebih ringan menggunakan Va
 
 - **Core**: Vanilla JavaScript (ES6+).
 - **Styling:** Tailwind CSS CDN
-- **Components:** Shadcn UI
 - **Charting:** Chart.js
 - **Icons:** Lucide Icons
 
