@@ -1,58 +1,76 @@
-## My first project on ML Projects
+# My First Project on ML
+
+## 📋 Project Overview
+
+Aplikasi **End-to-End Machine Learning** yang dirancang untuk melakukan segmentasi pelanggan secara otomatis menggunakan algoritma *Unsupervised Learning*. Sistem ini mengolah data demografis dan perilaku transaksi untuk mengidentifikasi pola klaster pelanggan, yang kemudian digunakan untuk prediksi persona pelanggan baru secara real-time melalui REST API.
+
+Project ini mengintegrasikan pipeline Data Science (Scikit-Learn) dengan arsitektur web modern (FastAPI & Next.js) untuk kebutuhan analisis bisnis dan pengambilan keputusan berbasis data.
 
 ---
 
-### Project ini menggunakan Unsupervised Learning untuk mengelompokkan data tanpa label.
+## 🎯 Objectives
 
-#### Data Preprocessing:
-
-- Feature Selection: Menggunakan Annual Income dan Spending Score.
-- Scaling: Menggunakan StandardScaler untuk normalisasi data.
-
-#### Modeling:
-
-- Algoritma: K-Means Clustering.
-- Optimal K: Ditentukan menggunakan Elbow Method (k=5).
-
-#### Cluster Labels:
-
-- Sensible (Hemat): Income Rendah, Spending Rendah.
-- Careless (Boros): Income Rendah, Spending Tinggi.
-- Standard (Normal): Income Menengah, Spending Menengah.
-- Saver (Sultan Irit): Income Tinggi, Spending Rendah.
-- Target (Sultan): Income Tinggi, Spending Tinggi.
+1.  **Data-Driven Segmentation:** Menggantikan segmentasi manual dengan pengelompokan berbasis algoritma K-Means Clustering untuk akurasi yang lebih tinggi.
+2.  **Real-time Inference:** Menyediakan interface bagi pengguna untuk memprediksi kategori pelanggan baru secara instan tanpa perlu melatih ulang model.
+3.  **Visualization:** Menyajikan distribusi data pelanggan dalam format Scatter Plot interaktif untuk memudahkan analisis stakeholder.
 
 ---
 
-### 🚀 Tech Stack
+## Methodology & Implementation
 
-#### Frontend (Client)
+### 1. Data Preprocessing
+* **Dataset:** Mall Customer Data (Kaggle).
+* **Feature Selection:** Fokus pada dimensi `Annual Income (k$)` dan `Spending Score (1-100)`.
+* **Normalization:** Penerapan `StandardScaler` untuk menstandarisasi fitur agar memiliki rata-rata 0 dan varians 1, mencegah bias skala pada algoritma berbasis jarak (Euclidean distance).
 
-- **Framework:** Next.js 16 (App Router)
-- **Styling:** Tailwind CSS
-- **UI Components:** Shadcn UI
-- **Visualization:** Recharts (Scatter Plot)
-- **State & Fetching:** Axios, React Hooks
-- **Validation:** Zod + React Hook Form
+### 2. Modeling (K-Means Clustering)
+* **Algorithm:** K-Means Clustering.
+* **Hyperparameter Tuning:** Penentuan jumlah cluster optimal ($k=5$) menggunakan **Elbow Method** (analisis WCSS).
+* **Cluster Definition:**
+    * **Cluster 0 (Sensible):** Low Income, Low Spending.
+    * **Cluster 1 (Careless):** Low Income, High Spending.
+    * **Cluster 2 (Standard):** Medium Income, Medium Spending.
+    * **Cluster 3 (Saver):** High Income, Low Spending.
+    * **Cluster 4 (Target):** High Income, High Spending.
 
-#### Backend (Server & ML)
-
-- **Framework:** FastAPI
-- **Machine Learning:** Scikit-Learn (K-Means), Pandas, NumPy
-- **Model Serialization:** Joblib
-- **Server:** Uvicorn
-
----
-
-### Fitur
-
-1. Dashboard Visualisasi
-   Menampilkan sebaran data pelanggan dalam grafik Scatter Plot. Warna titik merepresentasikan cluster yang berbeda.
-
-2. AI Predictor
-   Form input untuk memprediksi kategori pelanggan baru. Cukup masukkan Umur, Income, dan Spending Score, lalu sistem akan mengembalikan hasil analisis persona secara instan.
+### 3. System Architecture
+* **Model Persistence:** Model dan Scaler disimpan (`joblib`) untuk efisiensi inferensi.
+* **API Layer:** FastAPI menangani request prediksi, melakukan scaling input on-the-fly, dan mengembalikan label cluster.
 
 ---
 
-![document1](/frontend/public/image1.png)
-![document2](/frontend/public/image2.png)
+## 🛠️ Tech Stack
+
+### Backend & AI
+* **Language:** Python
+* **Framework:** FastAPI 
+* **Server:** Uvicorn 
+* **ML Libraries:** Scikit-Learn, Pandas, NumPy
+* **Serialization:** Joblib
+
+### Frontend
+* **Framework:** Next.js 16 (App Router)
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS
+* **Components:** Shadcn UI
+* **Charting:** Recharts
+* **State Management:** React Hooks
+* **Form Validation:** Zod & React Hook Form
+
+---
+
+## 🚀 Key Features
+
+### 1. Dashboard Analytics
+Visualisasi data scatter plot yang memetakan seluruh pelanggan berdasarkan `Income` vs `Spending Score`, dengan color-coding berdasarkan hasil clustering model.
+
+### 2. Predictor Module
+Form input terintegrasi yang memungkinkan pengguna memasukkan parameter pelanggan baru. Sistem melakukan request ke endpoint `/predict`, memproses data melalui Scaler dan Model yang sudah dilatih, lalu mengembalikan profil persona beserta Cluster ID.
+
+---
+
+## 📸 Application Preview
+
+| Dashboard Visualization | Prediction Interface |
+|:-----------------------:|:--------------------:|
+| ![Dashboard](/frontend/public/image1.png) | ![Predictor](/frontend/public/image2.png) |
