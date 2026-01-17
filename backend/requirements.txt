@@ -1,5 +1,8 @@
-numpy 
-matplotlib 
-seaborn 
-scikit-learn 
+fastapi
+uvicorn
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
 joblib

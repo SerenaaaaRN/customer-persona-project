@@ -43,4 +43,5 @@ ToDo.md
 
 #python
 .venv/
+__pycache__
 

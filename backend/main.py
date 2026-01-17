@@ -30,9 +30,7 @@ def read_root():
 
 @app.post("/predict")
 def predict(data: CustomerData):
-    """
-    Menerima input user -> Return Persona Label
-    """
+    """ menerima input user -> return persona label """
     try:
         result = predict_persona(data.age, data.annual_income, data.spending_score)
         return result
@@ -41,9 +39,7 @@ def predict(data: CustomerData):
 
 @app.get("/stats")
 def stats():
-    """
-    Return dataset lengkap + cluster label untuk visualisasi Scatter Plot
-    """
+    '''return dataset dan cluster untuk visualisasi dengan scatter plot'''
     try:
         data = get_dataset_stats()
         return {"data": data}

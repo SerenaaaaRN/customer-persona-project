@@ -17,7 +17,7 @@ export interface CustomerStats {
   Persona: string;
 }
 
-export interface PrecitionResult {
+export interface PredictionResult {
   cluster_id: number;
   persona: string;
   description: string;
@@ -30,7 +30,7 @@ export const getStats = async (): Promise<CustomerStats[]> => {
 };
 
 //function untuk kirim data predikis
-export const predictPersona = async (age: number, income: number, score: number): Promise<PrecitionResult> => {
+export const predictPersona = async (age: number, income: number, score: number): Promise<PredictionResult> => {
   const response = await api.post("/predict", {
     age: age,
     annual_income: income,
