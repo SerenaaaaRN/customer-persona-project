@@ -51,8 +51,8 @@
 
 2. AI Predictor
    Form input untuk memprediksi kategori pelanggan baru. Cukup masukkan Umur, Income, dan Spending Score, lalu sistem akan mengembalikan hasil analisis persona secara instan.
-   
+
 ---
 
-![document1](image1.png)
-![document2](image2.png)
+![document1](/frontend/public/image1.png)
+![document2](/frontend/public/image2.png)
