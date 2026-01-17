@@ -6,7 +6,8 @@ from ml_logic import predict_persona, get_dataset_stats
 app = FastAPI(title="Customer Persona API")
 
 origins = [
-    "http://localhost:3000",
+    "http://localhost:3000", # Untuk Next.js 
+    "http://127.0.0.1:5500", # Untuk Live Server (Vanilla JS)
 ]
 
 app.add_middleware(

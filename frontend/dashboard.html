@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Persona AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="bg-slate-50 flex overflow-hidden">
+    <aside id="sidebar-container"></aside>
+    <main class="flex-1 h-screen overflow-y-auto p-8">
+      <div class="flex items-center gap-4 mb-8 pb-4 border-b border-slate-200">
+        <button class="p-2 hover:bg-slate-100 rounded-md lg:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <span class="text-sm font-semibold text-slate-500">/ Dashboard Panel</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+          <p class="text-sm font-medium text-slate-500">Total Customers</p>
+          <div id="totalCustomers" class="text-2xl font-bold mt-1">--</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+          <p class="text-sm font-medium text-slate-500">Total Clusters</p>
+          <div id="totalClusters" class="text-2xl font-bold mt-1">--</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+          <p class="text-sm font-medium text-slate-500">Top Persona</p>
+          <div id="topPersona" class="text-2xl font-bold mt-1 ">--</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+          <p class="text-sm font-medium text-slate-500">Avg. Spending Score</p>
+          <div id="avgSpending" class="text-2xl font-bold mt-">--</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+          <h2 class="font-semibold mb-6">Customer Clusters</h2>
+          <div class="h-[400px]">
+            <canvas id="personaChart"></canvas>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+          <h2 class="font-semibold mb-4">Persona Distribution</h2>
+          <div id="personaList" class="space-y-4"></div>
+        </div>
+      </div>
+    </main>
+    <script src="./js/sidebar.js"></script>
+    <script src="./js/dashboard.js"></script>
+  </body>
+</html>
